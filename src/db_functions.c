@@ -30,3 +30,19 @@ void insert_row(Table *table, char data[MAX_COLUMNS][MAX_ROW_LENGTH]) {
         strncpy(new_row->data[i], data[i], MAX_ROW_LENGTH);
     }
 }
+
+void db_insert(Table *table, char data[MAX_COLUMNS][MAX_ROW_LENGTH]) {
+    insert_row(table, data);
+    printf("Ligne insérée avec succès dans la table %s.\n", table->name);
+}
+
+void db_select(Table *table) {
+    printf("Affichage des données de la table %s :\n", table->name);
+    for (int i = 0; i < table->row_count; i++) {
+        printf("Ligne %d : ", i + 1);
+        for (int j = 0; j < table->column_count; j++) {
+            printf("%s = %s, ", table->columns[j].name, table->rows[i].data[j]);
+        }
+        printf("\n");
+    }
+}

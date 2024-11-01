@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
-#include <string.h>   // Inclure pour strcmp
+#include <string.h> 
 #include "db_structures.h"
 #include "db_functions.c"
 
@@ -52,6 +52,10 @@ int main() {
     assert(strcmp(table.rows[1].data[0], "2") == 0);
     assert(strcmp(table.rows[1].data[1], "Bob") == 0);
     assert(strcmp(table.rows[1].data[2], "21") == 0);
+
+    // Test : Fonction SELECT
+    printf("\nAffichage des données de la table après insertion :\n");
+    db_select(&table);
 
     printf("\nTable '%s' a %d colonnes et %d lignes.\n", table.name, table.column_count, table.row_count);
     printf("Tous les tests ont réussi !\n");
